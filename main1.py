@@ -64,7 +64,7 @@ class HTML(Tag):
         """Задаем возможность вывода в файл и формируем для этого строку, которую будем в него записывать."""        
         self.output = output
         self.stro = ""
-   
+          
     def __exit__(self, mmm, type, value): 
         """Добавляем закрывающий тег."""       
         self.body.append("</html>")
@@ -76,6 +76,8 @@ class HTML(Tag):
                 self.stro += str_ + "\n"
             file_ = open(self.output, "w", encoding="utf-8")
             file_.write(self.stro)
+            file_.flush()
+            file_.close()
         else:
             print("Неправильное имя файла!")
    
