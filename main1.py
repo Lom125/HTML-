@@ -93,36 +93,37 @@ class TopLevelTag(Tag):
 
 
 if __name__ == "__main__":
-    """Для вывода в файл надо задать имя файла с расширением html. Для вывода на экран никаких атрибутов для HTML задавать не надо - HTML()."""
-    with HTML("html.html") as doc:
-        with TopLevelTag("head") as head:
-            with Tag("meta", is_single=True, charset=("UTF-8")) as meta:
-                pass
-            head += meta
-
-            with Tag("title") as title:
-                title.text = "hello"
-            head += title
-        doc += head
-
-        with TopLevelTag("body") as body:
-            
-            with Tag("h1", klass=("main-text")) as h1:
-                h1.text = "Test"
-            body += h1
-
-            with Tag("div", klass=("container", "container-fluid"), id="lead") as div:
-                div.text = "Внутри содержатся два тега"
-                with Tag("p") as paragraph:
-                    paragraph.text = "Another test"
-                
-                div += paragraph
-
-                with Tag("img", is_single=True, src="/icon.png") as img:
+    def main():
+        """Для вывода в файл надо задать имя файла с расширением html. Для вывода на экран никаких атрибутов для HTML задавать не надо - HTML()."""
+        with HTML("html.html") as doc:
+            with TopLevelTag("head") as head:
+                with Tag("meta", is_single=True, charset=("UTF-8")) as meta:
                     pass
-               
-                div += img
+                head += meta
 
-            body += div
-        doc += body
+                with Tag("title") as title:
+                    title.text = "hello"
+                head += title
+            doc += head
+
+            with TopLevelTag("body") as body:
+
+                with Tag("h1", klass=("main-text")) as h1:
+                    h1.text = "Test"
+                body += h1
+
+                with Tag("div", klass=("container", "container-fluid"), id="lead") as div:
+                    div.text = "Внутри содержатся два тега"
+                    with Tag("p") as paragraph:
+                        paragraph.text = "Another test"
+
+                    div += paragraph
+
+                    with Tag("img", is_single=True, src="/icon.png") as img:
+                        pass
+
+                    div += img
+
+                body += div
+            doc += body
 
